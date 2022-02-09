@@ -9,27 +9,20 @@ router.get('/',async(req,res)=>{
     let querys={}
     name?querys.name={[Op.substring]:name}:null;
     age?querys.age=age:null;
-    if(querys.name || querys.age){
+    let include_movies=[];
+    movies?include_movies[0]={
+        model:Movie, where: {id:movies}
+    }:null
+    if(querys.name || querys.age || movies){
        try {
            const characters=await Character.findAll({
-               where:querys
+               where:querys,
+               include:include_movies
            })
            res.status(200).json(characters)
        } catch (error) {
            res.status(404).json(error)
        }
-    }
-    else if(!name && !age && movies){
-        try {
-            const characters=await Character.findAll({
-                include:[{
-                    model:Movie, where: {id:movies}
-                }]
-            })
-            res.status(200).json(characters)
-        } catch (error) {
-            res.status(200).json(error);
-        }
     }
     else{
         try {

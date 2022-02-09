@@ -9,28 +9,21 @@ router.get('/',async(req,res)=>{
     title?querys.title={[Op.substring]:title}:null;
     let orders=[];
     order?orders[0]=["title",order]:null;
-    if(title || order){
+    let include_genre=[];
+    genre?include_genre[0]={
+        model:Genre,where:{id:genre}
+    }:null;
+    if(title || order || genre){
        try {
            const movies=await Movie.findAll({
                where:querys,
-               order:orders
+               order:orders,
+               include:include_genre
            })
            res.status(200).json(movies)
        } catch (error) {
            res.status(404).json(error)
        }
-    }
-    else if(!title && !order && genre){
-        try {
-            const movies=await Movie.findAll({
-                include:[{
-                    model:Genre,where:{id:genre}
-                }]
-            })
-            res.status(200).json(movies)
-        } catch (error) {
-            res.status(404).json(error)
-        }
     }
     else{
         try {
