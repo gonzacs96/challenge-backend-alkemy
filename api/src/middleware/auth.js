@@ -1,7 +1,6 @@
 require('dotenv').config();
-const {
-    AUTH_SECRET,AUTH_EXPIRES,AUTH_ROUNDS
-  } = process.env;
+const {AUTH_SECRET} = process.env;
+
 const jwt=require('jsonwebtoken')
 
 function auth(req,res,next){
@@ -21,4 +20,4 @@ function auth(req,res,next){
     }
 }
 
-module.exports=auth;
+module.exports=auth; 

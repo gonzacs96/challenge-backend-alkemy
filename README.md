@@ -1,4 +1,4 @@
-Crear archivo .env dentro de src, con los siguientes datos:
+Crear archivo .env dentro de api, con los siguientes datos:
 
 ```
 /* DB CONFIG */
@@ -14,6 +14,10 @@ DB_DIALECT=dialectConfigSequelizeConn
 AUTH_SECRET=fraseSecretaConfig
 AUTH_EXPIRES=tiempoExpiraTokenAuth
 AUTH_ROUNDS=roundsTokenAuth
+
+/* API KEY SENDGRID */
+
+API_KEY=key
 
 ```
 
