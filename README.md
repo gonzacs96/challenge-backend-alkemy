@@ -18,6 +18,7 @@ AUTH_ROUNDS=roundsTokenAuth
 /* API KEY SENDGRID */
 
 API_KEY=key
+EMAIL_SENDGRID=emailDeSendGrid
 
 ```
 
