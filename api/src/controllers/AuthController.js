@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 const {
     AUTH_SECRET,AUTH_EXPIRES,AUTH_ROUNDS
   } = process.env;
